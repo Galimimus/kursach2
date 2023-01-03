@@ -8,3 +8,4 @@ if (!isset($_SESSION['user'])) {
 } else {
     return_ok(unserialize($_SESSION['user']), 200);
 }
+
