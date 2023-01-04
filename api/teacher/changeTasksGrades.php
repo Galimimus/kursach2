@@ -23,10 +23,9 @@ if(mysqli_affected_rows($link) == 0){
 
 $query="INSERT INTO tasks_grades (exercise_id, student_id, task_grade)
 SELECT $exercise_id, $student_id, $task_grade
-FROM students
-WHERE student_id = $student_id AND EXISTS (
-    SELECT * FROM exercises WHERE exercise_id = $exercise_id
-)";
+FROM dual
+WHERE EXISTS (SELECT * FROM students WHERE student_id = $student_id)
+AND EXISTS (SELECT * FROM exercises WHERE exercise_id = $exercise_id)";
 $result = mysqli_query($link, $query);
 
 }
