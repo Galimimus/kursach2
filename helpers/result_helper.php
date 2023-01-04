@@ -11,6 +11,7 @@ function return_ok($data, $code)
     );
     header('Content-Type: application/json');
     echo json_encode_objs($result);
+    die();
 }
 
 function return_error($detail, $code)
@@ -23,6 +24,7 @@ function return_error($detail, $code)
     );
     header('Content-Type: application/json');
     echo json_encode_objs($result);
+    die();
 }
 
 function json_encode_objs($item)
