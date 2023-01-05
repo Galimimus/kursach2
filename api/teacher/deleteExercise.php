@@ -4,23 +4,32 @@ require_once('/var/www/html/kursach2/helpers/result_helper.php');
 require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
-if(!check_rights(Role::teacher)) die();
-if(!isset($_GET['exercise_id'])) return_error('exercise_id is not set', 400);
+if (!check_rights(Role::teacher)) die();
+if (!isset($_GET['exercise_id'])) return_error('exercise_id is not set', 400);
 
 $exercise_id = $_GET['exercise_id'];
+$teacher_id = unserialize($_SESSION['user'])->id;
 
 $link = new Database();
 $link = $link->connect();
+
+$query = "SELECT * FROM exercises WHERE exercise_id = '$exercise_id' AND teacher_id = '$teacher_id'";
+$result = check_query(mysqli_query($link, $query), "Database error", 500);
+
+check_query(mysqli_num_rows($result), "Exercise does not belong to teacher or exercise does not exist", 400);
+
 $query = "DELETE FROM exercises WHERE exercise_id = '$exercise_id'";
-$result = mysqli_query($link, $query);
+check_query(mysqli_query($link, $query), "Delete exercise from database error", 500);
+
+check_query(mysqli_affected_rows($link), "Exercise does not exist", 400);
+
+
 
 $query = "DELETE FROM tasks_grades WHERE exercise_id = '$exercise_id'";
-$result = mysqli_query($link, $query);
+
+check_query(mysqli_query($link, $query), "Delete tasks grades from database error", 500);
 
 mysqli_close($link);
 
-if($result) {
-    return_ok("Exercise deleted", 200);
-} else {
-    return_error("Exercise not deleted", 400);
-}
+return_ok("Exercise deleted", 200);
+

@@ -7,18 +7,17 @@ api
 		students
 			addStudent.php
 			deleteStudent.php
-			listStudents.php
 		teachers
 			addTeacher.php
 			deleteTeacher.php
-			listTeachers.php
 		subjects
 			addSubject.php
 			deleteSubject.php
-			listSubjects.php
+			addSubjectToTeacher.php
+			deleteSubjectFromTeacher.php
 	student
 		getSubjects.php
-		listTasksGrades.php?student_id=
+		listTasksGrades.php?subject_id=
 	teacher
 		getSubjects.php
 		getExercises.php

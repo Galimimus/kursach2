@@ -12,7 +12,7 @@ $teacher_id = unserialize($_SESSION['user'])->id;
 $link = new Database();
 $link = $link->connect();
 $query = "SELECT * FROM subjects WHERE teacher_id = '$teacher_id'";
-$result = mysqli_query($link, $query);
+$result = check_query(mysqli_query($link, $query), 'Database error', 500);
 $subjects = array();
 
 while($row = mysqli_fetch_assoc($result)) {

@@ -13,10 +13,24 @@ $student_id = unserialize($_SESSION['user'])->id;
 
 $link = new Database();
 $link = $link->connect();
+
+$query = "SELECT grade_name FROM subjects WHERE subject_id='$subject_id'";
+$result = check_query(mysqli_query($link, $query), 'Database error', 500);
+
+check_query(mysqli_num_rows($result), 'No such subject', 400);
+
+
+if(unserialize($_SESSION['user'])->grade != mysqli_fetch_assoc($result)['grade_name']) {
+    return_error('You are not in this grade', 400);
+}
+
 $query = "SELECT exercises.exercise_id, name, text, task_grade FROM exercises
-LEFT JOIN tasks_grades ON exercises.exercise_id=tasks_grades.exercise_id
+LEFT JOIN tasks_grades ON exercises.exercise_id=tasks_grades.exercise_id AND student_id='$student_id'
 WHERE subject_id='$subject_id'";
-$result = mysqli_query($link, $query);
+
+$result = check_query(mysqli_query($link, $query), 'Database error', 500);
+
+
 $tasks_grades = array();
 while($row = mysqli_fetch_assoc($result)) {
     $task_grade['task_grade'] = $row['task_grade'];
