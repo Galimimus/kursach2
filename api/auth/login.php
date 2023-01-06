@@ -3,12 +3,14 @@ session_start();
 require_once('/var/www/html/kursach2/models/user_model.php');
 include_once '/var/www/html/kursach2/helpers/result_helper.php';
 
+// TODO: get $email and $pass from switch
+
 switch ($_GET['role']) {
     case "admin_login":
 
-        $fio = $_GET['fio'];
-        $pass = $_GET['pass'];
-        $admin = new Admin($fio, $pass);
+        $email = $_GET['email'];
+        $pass = $_GET['password'];
+        $admin = new Admin($email, $pass);
         $res = $admin->login();
         if ($res) {
             $_SESSION['user'] = serialize($admin);
@@ -20,9 +22,10 @@ switch ($_GET['role']) {
 
     case "teacher_login":
 
-        $fio = $_GET['fio'];
-        $pass = $_GET['pass'];
-        $teacher = new Teacher($fio, $pass);
+        $email = $_GET['email'];
+        $pass = $_GET['password'];
+        $name = $_GET['name'];
+        $teacher = new Teacher($email, $pass, $name);
         $res = $teacher->login();
         if ($res) {
             $_SESSION['user'] = serialize($teacher);
@@ -34,10 +37,9 @@ switch ($_GET['role']) {
 
     case 'student_login':
 
-        $fio = $_GET['fio'];
-        $grade = $_GET['grade'];
-        $pass = $_GET['pass'];
-        $student = new Student($fio, $pass, $grade);
+        $email = $_GET['email'];
+        $pass = $_GET['password'];
+        $student = new Student($email, $pass);
         $res = $student->login();
         if ($res) {
             $_SESSION['user'] = serialize($student);

@@ -8,17 +8,19 @@ require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
 if (!check_rights(Role::admin)) die();
-if (!isset($_GET['fio'])) return_error("No fio", 400);
-if (!isset($_GET['pass'])) return_error("No pass", 400);
+if (!isset($_GET['name'])) return_error("No name", 400);
+if (!isset($_GET['password'])) return_error("No pass", 400);
+if(!isset($_GET['email'])) return_error("No email", 400);
 
-$fio = $_GET['fio'];
-$pass = $_GET['pass'];
+$name = $_GET['name'];
+$pass = $_GET['password'];
+$email = $_GET['email'];
 
 $link = new Database();
 $link = $link->connect();
 //$this->password .= "fdfdsfdvhj";
-$pass = md5($pass);
-$query = "INSERT INTO teachers (name, password) VALUES ('$fio', '$pass')";
+//$pass = md5($pass);
+$query = "INSERT INTO teachers (name, password, email) VALUES ('$name', '$pass', '$email')";
 
 $result = mysqli_query($link, $query);
 
