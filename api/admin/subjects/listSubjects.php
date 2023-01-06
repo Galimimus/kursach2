@@ -9,13 +9,17 @@ if(!check_rights(Role::admin)) die();
 
 $link = new Database();
 $link = $link->connect();
-$query = "SELECT * FROM subjects";
+$query = "SELECT name, teacher_name, grade_name, subject_id FROM subjects s LEFT JOIN teachers t ON s.teacher_id = t.id";
 $result = mysqli_query($link, $query);
 $subjects = array();
 
 while($row = mysqli_fetch_assoc($result)) {
-    $subject = new Subject($row['name'], $row['teacher_id'], $row['grade_name']);
-    $subject->id = $row['subject_id'];
+    $subject = array(
+        "id" => $row['subject_id'],
+        "name" => $row['name'],
+        "grade" => $row['grade_name'],
+        "teacher" => $row['teacher_name']
+    );
     array_push($subjects, $subject);
 }
 

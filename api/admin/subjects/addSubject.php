@@ -18,10 +18,18 @@ $link = $link->connect();
 $query = "INSERT INTO subjects (name, grade_name, teacher_id) VALUES ('$name', '$grade', '$teacher')";
 $result = mysqli_query($link, $query);
 
+$id = mysqli_insert_id($link);
 mysqli_close($link);
 
 if($result) {
-    return_ok("Subject added", 200);
+    $subject = array(
+        "id" => $id,
+        "name" => $name,
+        "grade" => $grade,
+        "teacher" => $teacher
+    );
+
+    return_ok($subject, 200);
 } else {
     return_error("Subject not added", 400);
 }

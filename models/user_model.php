@@ -83,7 +83,7 @@ class Teacher extends User
         //$this->password .= "fdfdsfdvhj";
         //$this->password = md5($this->password);
         if ($row['password'] == $this->password) {
-            $this->name = $row['name'];
+            $this->name = $row['teacher_name'];
             $this->id = $row['id'];
             return true;
         } else {

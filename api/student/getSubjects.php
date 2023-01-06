@@ -11,11 +11,11 @@ $grade = unserialize($_SESSION['user'])->grade;
 
 $link = new Database();
 $link = $link->connect();
-$query = "SELECT * FROM subjects WHERE grade_name = '$grade'";
+$query = "SELECT * FROM subjects WHERE grade_name = '$grade' LEFT JOIN teachers t ON s.teacher_id = t.id";
 $result = mysqli_query($link, $query);
 $subjects = array();
 while($row = mysqli_fetch_assoc($result)) {
-    $subject = new Subject($row['name'], $row['teacher_id'] ,$row['grade_name']);
+    $subject = new Subject($row['name'], $row['teacher_name'] ,$row['grade_name']);
     $subject->id = $row['subject_id'];
     $subjects[] = $subject;
 }

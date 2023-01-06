@@ -29,11 +29,11 @@ form.addEventListener('submit', e => {
       if (data.ok) {
         // Redirect to the personal account page
         // selector for the role
-        if (role === 'student') {
+        if (role === 'student_login') {
           window.location.href = '../frontend/student/student.html';
-        } else if (role === 'teacher') {
+        } else if (role === 'teacher_login') {
           window.location.href = '../frontend/teacher/teacher.html';
-        } else if (role === 'admin') {
+        } else if (role === 'admin_login') {
         window.location.href = '../frontend/admin/admin.html';
         }
       } else {

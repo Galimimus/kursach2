@@ -14,9 +14,11 @@ $result = mysqli_query($link, $query);
 $teachers = array();
 
 while($row = mysqli_fetch_assoc($result)) {
-    $teacher = new Teacher($row['email'], $row['password'], $row['name']);
-    $teacher->id = $row['id'];
-    $teacher->name = $row['name'];
+    $teacher = array(
+        "id" => $row['id'],
+        "name" => $row['teacher_name'],
+        "email" => $row['email']
+    );
     array_push($teachers, $teacher);
 }
 
