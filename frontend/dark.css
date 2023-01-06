@@ -1,0 +1,102 @@
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 400px;
+    margin: 0 auto;
+    color: white;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  form div {
+    margin-bottom: 20px;
+  }
+  
+  form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  form input[type="email"],
+  form input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #444;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+  }
+  
+  form input[type="submit"] {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #0084ff;
+    color: white;
+    border: 0;
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #006ec3;
+  }
+  
+  .error-box {
+    display: none;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .role-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .role-selector input[type="radio"] {
+    display: none;
+  }
+  
+  .role-selector label {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 8px 12px;
+    background-color: #444;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .role-selector input[type="radio"]:checked + label {
+    background-color: #0084ff;
+  }
+  
+  .role-selector label:hover {
+    background-color: #006ec3;
+  }
+  body {
+    background-color: #333;
+    color: white;
+  }
+  
+  a {
+    color: #0084ff;
+  }
+  
+  a:hover {
+    color: #006ec3;
+  }
