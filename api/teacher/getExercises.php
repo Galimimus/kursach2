@@ -18,13 +18,21 @@ $query = "SELECT * FROM subjects WHERE subject_id = '$subject_id' AND teacher_id
 $result = check_query(mysqli_query($link, $query), 'Database error', 500);
 check_query(mysqli_num_rows($result), 'No such subject for teacher', 400);
 
+$row = mysqli_fetch_assoc($result);
+$grade = $row['grade_name'];
+
 $query = "SELECT * FROM exercises WHERE subject_id = '$subject_id'";
 $result = check_query(mysqli_query($link, $query), 'Database error', 500);
 $exercises = array();
 while($row = mysqli_fetch_assoc($result)) {
-    $exercise = new Exercise($row['name'], $row['subject_id'], $row['text'], $row['teacher_id']);
-    $exercise->id = $row['exercise_id'];
-    $exercises[] = $exercise;
+    $exercise = array(
+        "name" => $row['name'],
+        "id" => $row['exercise_id'],
+        "text" => $row['text'],
+        "grade" => $grade
+    );
+
+    array_push($exercises, $exercise);
 }
 
 mysqli_close($link);
