@@ -1,6 +1,5 @@
 <?php
 
-// TODO: uncomment salt
 
 require_once('/var/www/html/kursach2/helpers/result_helper.php');
 require_once('/var/www/html/kursach2/models/user_model.php');
@@ -19,8 +18,8 @@ $email = $_GET['email'];
 
 $link = new Database();
 $link = $link->connect();
-//$this->password .= "fdfdsfdvhj";
-//$pass = md5($pass);
+$pass .= "fdfdsfdvhj";
+$pass = md5($pass);
 $query = "INSERT INTO teachers (teacher_name, password, email) VALUES ('$name', '$pass', '$email')";
 
 $result = mysqli_query($link, $query);

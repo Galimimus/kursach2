@@ -7,7 +7,7 @@ function createSubjectCard(subjects) {
         newCard.setAttribute('id', 'subject-' + subject.id);
         newCard.setAttribute('class', "p-4 bg-gray-800 dark:bg-gray-700 rounded-lg mb-4 flex justify-between");
         newCard.innerHTML = `
-        <h3 class="text-xl font-bold mb-2 text-gray-100 dark:text-gray-800">${subject.name}</h3>
+        <h3 class="text-xl font-bold mb-2 text-gray-100 dark:text-gray-800">${subject.name} ${subject.grade}</h3>
         <button class="bg-gray-600 dark:bg-gray-500 rounded-lg px-4 py-2 text-gray-100 dark:text-gray-800 font-bold" onclick="getExercises(${subject.id})">View</button>
       `;
         leftColumnBody.insertAdjacentElement("afterbegin", newCard);
@@ -192,5 +192,3 @@ addExercise.addEventListener('click', (e) => {
 });
 
 getSubjects();
-
-//TODO: Delete tasks grades

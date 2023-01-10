@@ -1,6 +1,5 @@
 <?php
 
-// TODO: uncomment md5() function
 
 require_once('/var/www/html/kursach2/helpers/result_helper.php');
 require_once('/var/www/html/kursach2/models/user_model.php');
@@ -21,8 +20,8 @@ $grade = $_GET['grade'];
 
 $link = new Database();
 $link = $link->connect();
-//$this->password .= "fdfdsfdvhj";
-//$pass = md5($pass);
+$pass .= "fdfdsfdvhj";
+$pass = md5($pass);
 $query = "INSERT INTO students (grade_name, student_name, password, email) VALUES ('$grade', '$name', '$pass', '$email')";
 $result = mysqli_query($link, $query);
 

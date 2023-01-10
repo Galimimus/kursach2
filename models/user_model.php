@@ -1,7 +1,6 @@
 <?php
 require_once('/var/www/html/kursach2/helpers/database.php');
 
-// TODO: uncomment md5() in login() methods
 // abstract class User with fields: id, fio, password
 
 enum Role
@@ -46,8 +45,8 @@ class Student extends User
         $query = "SELECT * FROM students WHERE email = '$this->email'";
         $result = mysqli_query($link, $query);
         $row = mysqli_fetch_assoc($result);
-        //$this->password .= "fdfdsfdvhj";
-        //$this->password = md5($this->password);
+        $this->password .= "fdfdsfdvhj";
+        $this->password = md5($this->password);
         if ($row['password'] == $this->password) {
             $this->grade = $row['grade_name'];
             $this->name = $row['student_name'];
@@ -80,8 +79,8 @@ class Teacher extends User
         $query = "SELECT * FROM teachers WHERE email = '$this->email'";
         $result = mysqli_query($link, $query);
         $row = mysqli_fetch_assoc($result);
-        //$this->password .= "fdfdsfdvhj";
-        //$this->password = md5($this->password);
+        $this->password .= "fdfdsfdvhj";
+        $this->password = md5($this->password);
         if ($row['password'] == $this->password) {
             $this->name = $row['teacher_name'];
             $this->id = $row['id'];
@@ -109,8 +108,8 @@ class Admin extends User
         $query = "SELECT * FROM admins WHERE name = '$this->email'";
         $result = mysqli_query($link, $query);
         $row = mysqli_fetch_assoc($result);
-        //$this->password .= "fdfdsfdvhj";
-        //$this->password = md5($this->password);
+        $this->password .= "fdfdsfdvhj";
+        $this->password = md5($this->password);
         mysqli_close($link);
         if ($row['password'] == $this->password) {
             $this->id = $row['id'];
