@@ -5,8 +5,9 @@ require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
 if(!check_rights(Role::teacher)) die();
-if(!isset($_GET['exercise_id'])) return_error('exercise_id is not set', 400);
-if(!isset($_GET['grade_name'])) return_error('grade_name is not set', 400);
+
+check_get_field('exercise_id', 'int');
+check_get_field('grade_name', 'string');
 
 $exercise_id = $_GET['exercise_id'];
 $grade_name = $_GET['grade_name'];

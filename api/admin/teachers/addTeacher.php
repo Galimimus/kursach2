@@ -8,9 +8,10 @@ require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
 if (!check_rights(Role::admin)) die();
-if (!isset($_GET['name'])) return_error("No name", 400);
-if (!isset($_GET['password'])) return_error("No pass", 400);
-if (!isset($_GET['email'])) return_error("No email", 400);
+
+check_get_field('email', 'string');
+check_get_field('password', 'string');
+check_get_field('name', 'string');
 
 $name = $_GET['name'];
 $pass = $_GET['password'];

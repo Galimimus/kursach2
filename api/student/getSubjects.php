@@ -11,7 +11,7 @@ $grade = unserialize($_SESSION['user'])->grade;
 
 $link = new Database();
 $link = $link->connect();
-$query = "SELECT * FROM subjects WHERE grade_name = '$grade' LEFT JOIN teachers t ON s.teacher_id = t.id";
+$query = "SELECT * FROM subjects LEFT JOIN teachers ON subjects.teacher_id = teachers.id WHERE grade_name = '$grade'";
 $result = mysqli_query($link, $query);
 $subjects = array();
 while($row = mysqli_fetch_assoc($result)) {

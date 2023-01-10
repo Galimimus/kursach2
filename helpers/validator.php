@@ -15,3 +15,21 @@ function check_rights($rights)
     }
     return true;
 }
+
+function check_field($value, $type){
+    switch ($type){
+        case "int":
+            return $value>0;
+        case "string":
+            return is_string($value) && $value!=="";
+        default:
+            return false;
+    }
+}
+
+function check_get_field($field, $type){
+    if(!isset($_GET[$field]) || !check_field($_GET[$field], $type)){
+        return_error("$field is not set", 400);
+        die();
+    }
+}

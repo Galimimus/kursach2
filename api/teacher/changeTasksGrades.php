@@ -5,9 +5,10 @@ require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
 if(!check_rights(Role::teacher)) die();
-if(!isset($_GET['student_id'])) return_error("No student id", 400);
-if(!isset($_GET['exercise_id'])) return_error("No exercise id", 400);
-if(!isset($_GET['task_grade'])) return_error("No task grade", 400);
+
+check_get_field('student_id', 'int');
+check_get_field('exercise_id', 'int');
+check_get_field('task_grade', 'int');
 
 $student_id = $_GET['student_id'];
 $exercise_id = $_GET['exercise_id'];

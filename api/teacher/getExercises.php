@@ -6,7 +6,8 @@ require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
 if(!check_rights(Role::teacher)) die();
-if(!isset($_GET['subject_id'])) return_error('subject_id is not set', 400);
+
+check_get_field('subject_id', 'int');
 
 $subject_id = $_GET['subject_id'];
 $teacher_id = unserialize($_SESSION['user'])->id;

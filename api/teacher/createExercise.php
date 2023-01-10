@@ -5,9 +5,9 @@ require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
 if(!check_rights(Role::teacher)) die();
-if(!isset($_GET['name'])) return_error('name is not set', 400);
-if(!isset($_GET['subject_id'])) return_error('subject_id is not set', 400);
-if(!isset($_GET['text'])) return_error('text is not set', 400);
+check_get_field('name', 'string');
+check_get_field('subject_id', 'int');
+check_get_field('text', 'string');
 
 $name = $_GET['name'];
 $subject_id = $_GET['subject_id'];
@@ -25,10 +25,15 @@ check_query(mysqli_num_rows($result), 'No such subject for teacher', 400);
 $query = "INSERT INTO exercises (text, subject_id, teacher_id, name) VALUES ('$text', $subject_id, $teacher_id, '$name')";
 $result = check_query(mysqli_query($link, $query), 'Database error', 500);
 
+$res = array(
+    'id' => mysqli_insert_id($link),
+    'text' => $text,
+    'name' => $name
+);
 mysqli_close($link);
 
 if($result) {
-    return_ok("Exercise added", 200);
+    return_ok($res, 200);
 } else {
     return_error("Exercise not added", 400);
 }

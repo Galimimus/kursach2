@@ -8,7 +8,8 @@
   <!-- CSS styles -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="../const.js"></script>
-    <script src="admin.js" defer></script>
+  <script src="admin.js" defer></script>
+  <script src="../logout.js"></script>
 </head>
 
 <body class="bg-gray-900 text-gray-200">
@@ -17,6 +18,7 @@
     <!-- Admin -->
     <div class="admin-account">
       <h1 class="text-2xl text-center text-gray-200">Welcome, Admin</h1>
+      <a onclick="logout()" class="block text-center text-gray-200 hover:text-gray-400">Logout</a>
       <h2 class="text-xl text-gray-200">Teachers</h2>
       <table class="w-full border-collapse">
         <thead class="bg-gray-800 text-gray-200">

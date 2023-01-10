@@ -5,7 +5,7 @@ require_once('/var/www/html/kursach2/models/user_model.php');
 require_once('/var/www/html/kursach2/helpers/database.php');
 
 if(!check_rights(Role::student)) die();
-if(!isset($_GET['subject_id'])) return_error('subject_id is not set', 400);
+check_get_field('subject_id', 'string');
 
 $subject_id = $_GET['subject_id'];
 

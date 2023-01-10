@@ -1,3 +1,5 @@
+let Subject_id;
+
 function createSubjectCard(subjects) {
     const leftColumnBody = document.getElementById('subjects-cards');
     subjects.forEach(subject => {
@@ -14,7 +16,6 @@ function createSubjectCard(subjects) {
 
 function createExerciseCard(exercises) {
     const middleColumnBody = document.getElementById('exercises-cards');
-    middleColumnBody.innerHTML = "";
 
     exercises.forEach(exercise => {
         const newCard = document.createElement('div');
@@ -23,6 +24,7 @@ function createExerciseCard(exercises) {
         newCard.innerHTML = `
         <h3 class="text-xl font-bold mb-2 text-gray-100 dark:text-gray-800">${exercise.name}</h3>
         <p class="text-gray-100 dark:text-gray-800">${exercise.text}</p>
+        <button class="bg-red-600 dark:bg-red-500 rounded-lg px-4 py-2 text-red-100 dark:text-red-800 font-bold" onclick="deleteExercise(${exercise.id})">Delete</button>
         <button class="bg-gray-600 dark:bg-gray-500 rounded-lg px-4 py-2 text-gray-100 dark:text-gray-800 font-bold" onclick="getTaskGrades(${exercise.id}, '${exercise.grade}')">View</button>
       `;
         middleColumnBody.insertAdjacentElement("afterbegin", newCard);
@@ -46,12 +48,18 @@ function getSubjects() {
 }
 
 function getExercises(subject_id) {
-    const rightColumn = document.getElementById('right-column');
-    rightColumn.style.display = 'none';
+    Subject_id = subject_id;
 
     const middleColumn = document.getElementById('middle-column');
     middleColumn.style.display = 'block';
 
+    const rightColumn = document.getElementById('right-column');
+    rightColumn.style.display = 'none';
+
+    const exercisesCards = document.getElementById('exercises-cards');
+    exercisesCards.innerHTML = "";
+
+    
     fetch(BASE_API_URL + 'teacher/getExercises.php?subject_id=' + subject_id)
         .then(response => response.json())
         .then(data => {
@@ -122,4 +130,67 @@ function createStudentRow(students, exercise_id) {
     });
 }
 
+function deleteExercise(exercise_id) {
+    fetch(BASE_API_URL + 'teacher/deleteExercise.php?exercise_id=' + exercise_id)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.ok) {
+                console.log(data);
+                return;
+            }
+
+            const exerciseCard = document.getElementById('exercise-' + exercise_id);
+            exerciseCard.remove();
+        })
+
+        .catch(error => {
+            console.log(error);
+        });
+
+
+}
+
+const addExercise = document.getElementById('add-exercise');
+
+addExercise.addEventListener('click', (e) => {
+    e.preventDefault();
+    const form = e.target.form;
+
+    // Get the input elements from the form
+    const nameInput = form.elements.name;
+    const textInput = form.elements.text;
+
+    const name = nameInput.value;
+    const text = textInput.value;
+
+    const data = new URLSearchParams();
+    data.append('subject_id', Subject_id);
+    data.append('name', name);
+    data.append('text', text);
+
+
+    fetch(BASE_API_URL + 'teacher/createExercise.php?' + data)
+        .then(response => response.json())
+        .then(data => {
+
+
+            if (!data.ok) {
+                console.log(data);
+                return;
+
+            }
+            createExerciseCard([data.result]);
+        })
+
+
+        .catch(error => {
+            console.log(error);
+        });
+
+
+
+});
+
 getSubjects();
+
+//TODO: Delete tasks grades

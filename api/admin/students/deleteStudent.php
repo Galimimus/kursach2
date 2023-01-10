@@ -5,7 +5,8 @@ require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
 if(!check_rights(Role::admin)) die();
-if(!isset($_GET['id'])) return_error("No id", 400);
+
+check_get_field('id', 'int');
 
 $id = $_GET['id'];
 

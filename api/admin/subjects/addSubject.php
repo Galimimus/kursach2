@@ -5,9 +5,10 @@ require_once('/var/www/html/kursach2/helpers/database.php');
 require_once('/var/www/html/kursach2/helpers/validator.php');
 
 if(!check_rights(Role::admin)) die();
-if(!isset($_GET['name'])) return_error("No name", 400);
-if(!isset($_GET['teacher'])) return_error("No teacher", 400);
-if(!isset($_GET['grade'])) return_error("No grade", 400);
+
+check_get_field('name', 'string');
+check_get_field('teacher', 'int');
+check_get_field('grade', 'string');
 
 $name = $_GET['name'];
 $teacher = $_GET['teacher'];
