@@ -16,8 +16,7 @@ switch ($_GET['role']) {
 
     case "teacher_login":
 
-        $name = $_GET['name'];
-        $user = new Teacher($email, $pass, $name);
+        $user = new Teacher($email, $pass);
         $res = $user->login();
         break;
 

@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Teacher Dashboard</title>
     <!-- Include the Tailwind CSS file -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <script src="../const.js"></script>
     <script src="teacher.js" defer></script>
     <script src="../logout.js"></script>
@@ -23,7 +26,7 @@
         </div>
       </div>
       <!-- Middle column: list of exercises -->
-      <div class="w-1/3 bg-gray-700 dark:bg-gray-900 p-4" style="display: none;" id="middle-column">
+      <div class="w-1/3 bg-gray-700 dark:bg-gray-900 p-4" style="visibility: hidden;" id="middle-column">
         <form class="flex flex-col" action="/api/teacher" method="GET">
           <label class="text-gray-100 dark:text-gray-800">Exercise name</label>
           <input class="border border-gray-600 dark:border-gray-200 bg-gray-700 dark:bg-gray-800 text-gray-100 dark:text-gray-800" type="text" name="name" />
@@ -37,7 +40,7 @@
         </div>
       </div>
       <!-- Right column: list of students with task grades -->
-      <div class="w-1/3 bg-gray-700 dark:bg-gray-900 p-4" style="display: none;" id="right-column">
+      <div class="w-1/3 bg-gray-700 dark:bg-gray-900 p-4" style="visibility: hidden;" id="right-column">
         <h2 class="text-2xl font-bold mb-2 text-gray-100 dark:text-gray-800">Students</h2>
         <table class="w-full">
   <thead>

@@ -1,4 +1,4 @@
-let Subject_id;
+var Subject_id;
 
 function createSubjectCard(subjects) {
     const leftColumnBody = document.getElementById('subjects-cards');
@@ -48,13 +48,13 @@ function getSubjects() {
 }
 
 function getExercises(subject_id) {
-    Subject_id = subject_id;
+    window.Subject_id = subject_id;
 
     const middleColumn = document.getElementById('middle-column');
-    middleColumn.style.display = 'block';
+    middleColumn.style.visibility = 'visible';
 
     const rightColumn = document.getElementById('right-column');
-    rightColumn.style.display = 'none';
+    rightColumn.style.visibility = 'hidden';
 
     const exercisesCards = document.getElementById('exercises-cards');
     exercisesCards.innerHTML = "";
@@ -77,7 +77,7 @@ function getExercises(subject_id) {
 
 function getTaskGrades(exercise_id, grade_name) {
     const rightColumn = document.getElementById('right-column');
-    rightColumn.style.display = 'block';
+    rightColumn.style.visibility = 'visible';
 
     fetch(BASE_API_URL + 'teacher/getTasksGrades.php?exercise_id=' + exercise_id + '&grade_name=' + grade_name)
         .then(response => response.json())

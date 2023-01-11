@@ -20,6 +20,9 @@ $link = $link->connect();
 $query = "SELECT * FROM subjects WHERE subject_id='$subject_id' AND teacher_id='$teacher_id'";
 $result = check_query(mysqli_query($link, $query), 'Database error', 500);
 
+$row = mysqli_fetch_assoc($result);
+$grade = $row['grade_name'];
+
 check_query(mysqli_num_rows($result), 'No such subject for teacher', 400);
 
 $query = "INSERT INTO exercises (text, subject_id, teacher_id, name) VALUES ('$text', $subject_id, $teacher_id, '$name')";
@@ -28,7 +31,8 @@ $result = check_query(mysqli_query($link, $query), 'Database error', 500);
 $res = array(
     'id' => mysqli_insert_id($link),
     'text' => $text,
-    'name' => $name
+    'name' => $name,
+    'grade' => $grade
 );
 mysqli_close($link);
 

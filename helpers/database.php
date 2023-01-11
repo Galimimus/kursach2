@@ -7,10 +7,10 @@ class Database
 {
     public function connect()
     {
-        $host = "localhost";
-        $user = "galimimus";
-        $pass = "pass111";
-        $db = "kursach";
+        $host = "sql7.freesqldatabase.com";
+        $user = "sql7589709";
+        $pass = "UTAQQcxLl4";
+        $db = "sql7589709";
         $link = mysqli_connect($host, $user, $pass, $db);
         if (!$link) {
             return_error("Database connection error", 400);

@@ -32,7 +32,7 @@ function createSubjectCard(subjects) {
 function getExercises(subject_id) {
     
     const middleColumn = document.getElementById('middle-column');
-    middleColumn.style.display = 'block';
+    middleColumn.style.visibility = 'visible';
 
     const taskGradeTable = document.getElementById('task-grade-table');
     taskGradeTable.innerHTML = "";

@@ -65,10 +65,9 @@ class Teacher extends User
     
     public $name;
 
-    public function __construct($email, $password, $name)
+    public function __construct($email, $password)
     {
         parent::__construct($email, $password);
-        $this->name = $name;
         $this->role = Role::teacher;
     }
 
