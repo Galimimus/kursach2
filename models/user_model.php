@@ -1,5 +1,5 @@
 <?php
-require_once('/var/www/html/kursach2/helpers/database.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/helpers/database.php');
 
 // abstract class User with fields: id, fio, password
 

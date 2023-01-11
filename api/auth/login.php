@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once('/var/www/html/kursach2/models/user_model.php');
-include_once '/var/www/html/kursach2/helpers/result_helper.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/models/user_model.php');
+include_once $_SERVER['DOCUMENT_ROOT'].'/helpers/result_helper.php';
 
 
 $email = $_GET['email'];

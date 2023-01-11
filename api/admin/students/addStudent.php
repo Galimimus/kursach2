@@ -1,10 +1,10 @@
 <?php
 
 
-require_once('/var/www/html/kursach2/helpers/result_helper.php');
-require_once('/var/www/html/kursach2/models/user_model.php');
-require_once('/var/www/html/kursach2/helpers/database.php');
-require_once('/var/www/html/kursach2/helpers/validator.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/helpers/result_helper.php');
+require_once('../../../models/user_model.php');
+require_once('../../../helpers/database.php');
+require_once('../../../kursach2/helpers/validator.php');
 
 if (!check_rights(Role::admin)) die();
 

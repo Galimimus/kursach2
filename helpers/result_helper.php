@@ -1,6 +1,6 @@
 <?php
 
-require_once('/var/www/html/kursach2/models/user_model.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/models/user_model.php');
 
 function return_ok($data, $code)
 {
