@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .login-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .role-selector {
+    display: flex;
+  }
+  
+  .role-selector input[type="radio"] {
+    display: none;
+  }
+  
+  .role-selector label {
+    display: block;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 8px;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+  }
+  
+  .role-selector label:hover {
+    background-color: #eee;
+  }
+  
+  .role-selector input[type="radio"]:checked + label {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .error-box {
+    background-color: #ffdddd;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    color: #ff0000;
+    margin-top: 10px;
+    padding: 8px;
+    text-align: center;
+  }

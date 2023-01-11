@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="dark.css">
+    <script src="const.js"></script>
+    <script src="login.js" defer></script>
+    <title>Learning Management System</title>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Learning Management System</h1>
+      <form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <br>
+        <div class="role-selector">
+  <input type="radio" id="student" name="role" value="student_login" checked>
+  <label for="student">Student</label>
+  <input type="radio" id="teacher" name="role" value="teacher_login">
+  <label for="teacher">Teacher</label>
+  <input type="radio" id="admin" name="role" value="admin_login">
+  <label for="admin">Admin</label>
+</div>
+        <br>
+        <input type="submit" value="Login">
+      </form>
+      <div class="error-box" style="display: none;">Error</div>
+    </div>
+  </body>
+</html>

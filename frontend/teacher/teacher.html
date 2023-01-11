@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=" UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teacher Dashboard</title>
+    <!-- Include the Tailwind CSS file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../const.js"></script>
+    <script src="teacher.js" defer></script>
+    <script src="../logout.js"></script>
+  </head>
+  <body class="bg-gray-800 dark:bg-gray-100 h-screen">
+    <!-- Page content goes here -->
+    <div class="flex h-full">
+      <!-- Left column: list of subjects -->
+      <div class="w-1/3 bg-gray-700 dark:bg-gray-900 p-4" id="left-column">
+        <h1 class="text-2xl text-center text-gray-200">Welcome, Teacher</h1>
+        <a onclick="logout()" class="block text-center text-gray-200 hover:text-gray-400">Logout</a>
+        <h2 class="text-2xl font-bold mb-2 text-gray-100 dark:text-gray-800">Subjects</h2>
+        <div class="relative" id="subjects-cards">
+          <!-- Card for each subject -->
+        </div>
+      </div>
+      <!-- Middle column: list of exercises -->
+      <div class="w-1/3 bg-gray-700 dark:bg-gray-900 p-4" style="display: none;" id="middle-column">
+        <form class="flex flex-col" action="/api/teacher" method="GET">
+          <label class="text-gray-100 dark:text-gray-800">Exercise name</label>
+          <input class="border border-gray-600 dark:border-gray-200 bg-gray-700 dark:bg-gray-800 text-gray-100 dark:text-gray-800" type="text" name="name" />
+          <label class="text-gray-100 dark:text-gray-800">Exercise description</label>
+          <textarea class="border border-gray-600 dark:border-gray-200 bg-gray-700 dark:bg-gray-800 text-gray-100 dark:text-gray-800" name="text"></textarea>
+          <button class="bg-gray-600 dark:bg-gray-200 text-gray-100 dark:text-gray-800 mt-2 mb-6" type="submit" id="add-exercise">Add exercise</button>
+        </form>
+        <h2 class="text-2xl font-bold mb-2 text-gray-100 dark:text-gray-800">Exercises</h2>
+        <div class="relative" id="exercises-cards">
+        <!-- Card for each exercise -->
+        </div>
+      </div>
+      <!-- Right column: list of students with task grades -->
+      <div class="w-1/3 bg-gray-700 dark:bg-gray-900 p-4" style="display: none;" id="right-column">
+        <h2 class="text-2xl font-bold mb-2 text-gray-100 dark:text-gray-800">Students</h2>
+        <table class="w-full">
+  <thead>
+    <tr>
+      <th class="text-left p-4 border border-gray-600 dark:border-gray-200 bg-gray-700 dark:bg-gray-800 text-gray-100 dark:text-gray-800">Student</th>
+      <th class="text-center p-4 border border-gray-600 dark:border-gray-200 bg-gray-700 dark:bg-gray-800 text-gray-100 dark:text-gray-800">Task grade</th>
+    </tr>
+  </thead>
+  <tbody id="student-table">
+    <!-- Student rows go here -->
+  </tbody>
+</table>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Management System - Admin</title>
+  <!-- CSS styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../const.js"></script>
+  <script src="admin.js" defer></script>
+  <script src="../logout.js"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+  <!-- Personal Account -->
+  <div class="container mx-auto mt-16">
+    <!-- Admin -->
+    <div class="admin-account">
+      <h1 class="text-2xl text-center text-gray-200">Welcome, Admin</h1>
+      <a onclick="logout()" class="block text-center text-gray-200 hover:text-gray-400">Logout</a>
+      <h2 class="text-xl text-gray-200">Teachers</h2>
+      <table class="w-full border-collapse">
+        <thead class="bg-gray-800 text-gray-200">
+          <tr>
+            <th class="border px-4 py-2 w-1/2">Name</th>
+            <th class="border px-4 py-2 w-1/2">Email</th>
+            <th class="border px-4 py-2 w-1/2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id = "teacher-table">
+          <!-- Add table rows here -->
+        </tbody>
+      </table>
+      <button id="create-teacher-btn" class="px-4 py-2 bg-green-500 text-gray-200 hover:bg-green-600 hover:text-white rounded-full focus:outline-none focus:shadow-outline-gray active:bg-green-600 mt-4">Create New Teacher</button>
+
+      <!-- Add the form HTML here -->
+      <div id="create-teacher-form" style="display: none;">
+        <form class="create-form mt-4 rounded-lg shadow-xl bg-gray-900 border-gray-700 p-4" action="/api/teachers" method="POST">
+          <button type="button" class="close-btn float-right px-2 py-1 text-gray-200 hover:text-white focus:outline-none focus:shadow-outline-gray" aria-label="Close">&times;</button>
+          <label for="name" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Name:</label>
+          <input type="text" name="name" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <label for="email" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Email:</label>
+          <input type="email" name="email" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <label for="password" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Password:</label>
+          <input type="password" name="password" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <button id="submit-teacher" type="submit" class="px-4 py-2 bg-green-500 text-gray-200 hover:bg-green-600 hover:text-white rounded-full focus:outline-none focus:shadow-outline-gray active:bg-green-600 mt-4">Create</button>
+        </form>
+      </div>
+
+      <h2 class="text-xl text-gray-200 mt-8">Students</h2>
+      <table class="w-full border-collapse">
+        <thead class="bg-gray-800 text-gray-200">
+          <tr>
+            <th class="border px-4 py-2 w-1/3">Name</th>
+            <th class="border px-4 py-2 w-1/3">Email</th>
+            <th class="border px-4 py-2 w-1/3">Grade</th>
+            <th class="border px-4 py-2 w-1/3">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="student-table">
+          <!-- Add table rows here -->
+        </tbody>
+      </table>
+      <button id="create-student-btn" class="px-4 py-2 bg-green-500 text-gray-200 hover:bg-green-600 hover:text-white rounded-full focus:outline-none focus:shadow-outline-gray active:bg-green-600 mt-4">Create New Student</button>
+
+      <!-- Add the form HTML here -->
+      <div id="create-student-form" style="display: none;">
+        <form class="create-form mt-4 rounded-lg shadow-xl bg-gray-900 border-gray-700 p-4" action="/api/students" method="POST">
+          <button type="button" class="close-btn float-right px-2 py-1 text-gray-200 hover:text-white focus:outline-none focus:shadow-outline-gray" aria-label="Close">&times;</button>
+          <label for="name" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Name:</label>
+          <input type="text" name="name" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <label for="email" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Email:</label>
+          <input type="email" name="email" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <label for="password" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Password:</label>
+          <input type="password" name="password" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <label for="grade" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Grade:</label>
+          <input type="text" name="grade" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <button id="submit-student" type="submit" class="px-4 py-2 bg-green-500 text-gray-200 hover:bg-green-600 hover:text-white rounded-full focus:outline-none focus:shadow-outline-gray active:bg-green-600 mt-4">Create</button>
+        </form>
+      </div>
+
+      <h2 class="text-xl text-gray-200 mt-8">Subjects</h2>
+      <table class="w-full border-collapse">
+        <thead class="bg-gray-800 text-gray-200">
+          <tr>
+            <th class="border px-4 py-2 w-1/3">Name</th>
+            <th class="border px-4 py-2 w-1/3">Grade</th>
+            <th class="border px-4 py-2 w-1/3">Teacher</th>
+            <th class="border px-4 py-2 w-1/3">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="subject-table">
+          <!-- Add table rows here -->
+        </tbody>
+      </table>
+      <button id="create-subject-btn" class="px-4 py-2 bg-green-500 text-gray-200 hover:bg-green-600 hover:text-white rounded-full focus:outline-none focus:shadow-outline-gray active:bg-green-600 mt-4 mb-2">Create New Subject</button>
+
+      <!-- Add the form HTML here -->
+      <div id="create-subject-form" style="display: none;">
+        <form class="create-form mt-2 mb-10 rounded-lg shadow-xl bg-gray-900 border-gray-700 p-4" action="/api/subject" method="POST">
+          <button type="button" class="close-btn float-right px-2 py-1 text-gray-200 hover:text-white focus:outline-none focus:shadow-outline-gray" aria-label="Close">&times;</button>
+          <label for="text" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Name:</label>
+          <input type="text" name="name" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <label for="grade" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Grade:</label>
+          <input type="text" name="grade" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+          <label for="teacher" class="block mb-2 text-sm font-bold text-gray-200 mt-4">Teacher:</label>
+          <select id="select-teacher" name="teacher" class="block w-full py-2 px-3 rounded-full bg-gray-800 text-gray-200 focus:outline-none focus:shadow-outline-gray" required>
+            <option value="">Select a teacher</option>
+            <!-- Add options for teachers here -->
+          </select>
+          <button id="submit-subject" type="submit" class="px-4 py-2 bg-green-500 text-gray-200 hover:bg-green-600 hover:text-white rounded-full focus:outline-none focus:shadow-outline-gray active:bg-green-600 mt-4">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

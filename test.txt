@@ -1,0 +1,27 @@
+api
+	auth
+		getMe.php
+		login.php
+		logout.php
+	admin
+		students
+			addStudent.php
+			deleteStudent.php
+		teachers
+			addTeacher.php
+			deleteTeacher.php
+		subjects
+			addSubject.php
+			deleteSubject.php
+			addSubjectToTeacher.php
+			deleteSubjectFromTeacher.php
+	student
+		getSubjects.php
+		listTasksGrades.php?subject_id=
+	teacher
+		getSubjects.php
+		getExercises.php
+		createExercise.php
+		deleteExercise.php
+		getTasksGrades.php
+		changeTasksGrades.php

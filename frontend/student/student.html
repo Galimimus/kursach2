@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=" UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teacher Dashboard</title>
+    <!-- Include the Tailwind CSS file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../const.js"></script>
+    <script src="student.js" defer></script>
+    <script src="../logout.js"></script>
+  </head>
+  <body class="bg-gray-800 dark:bg-gray-100 h-screen">
+    <!-- Page content goes here -->
+    <div class="flex h-full">
+      <!-- Left column: list of subjects -->
+      <div class="w-1/2 bg-gray-700 dark:bg-gray-900 p-4" id="left-column">
+        <h1 class="text-2xl text-center text-gray-200">Welcome, Student</h1>
+        <a onclick="logout()" class="block text-center text-gray-200 hover:text-gray-400">Logout</a>
+        <h2 class="text-2xl font-bold mb-2 text-gray-100 dark:text-gray-800">Subjects</h2>
+        <div class="relative" id="subjects-cards">
+          <!-- Card for each subject -->
+        </div>
+      </div>
+      <!-- Middle column: list of exercises -->
+      <div class="w-1/2 bg-gray-700 dark:bg-gray-900 p-4" style="display: none;" id="middle-column">
+        <table class="w-full">
+            <thead>
+              <tr>
+                <th class="text-left p-4 border border-gray-600 dark:border-gray-200 bg-gray-700 dark:bg-gray-800 text-gray-100 dark:text-gray-800">Exercise name</th>
+                <th class="text-left p-4 border border-gray-600 dark:border-gray-200 bg-gray-700 dark:bg-gray-800 text-gray-100 dark:text-gray-800">Exercise description</th>
+                <th class="text-center p-4 border border-gray-600 dark:border-gray-200 bg-gray-700 dark:bg-gray-800 text-gray-100 dark:text-gray-800">Task grade</th>
+              </tr>
+            </thead>
+            <tbody id="task-grade-table">
+              <!-- Student rows go here -->
+            </tbody>
+          </table>
+      </div>      
+    </div>
+  </body>
+</html>
