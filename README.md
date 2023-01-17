@@ -24,12 +24,12 @@
 #### Процесс реализации
 ------------------------
 #### 1. Пользовательский интерфейс
-![login](tree/main/pic/pic1.png)
+![login](pic/pic1.png)
 ![teacher](pic/pic2.png)
-![student](pic/pic3)
-![admin1](pic/pic4)
-![admin2](pic/pic5)
-![admin3](pic/pic6)
+![student](pic/pic3.png)
+![admin1](pic/pic4.png)
+![admin2](pic/pic5.png)
+![admin3](pic/pic6.png)
 
 #### 2. Пользовательский сценарий работы
 Пользователь попадает на страницу регистрации**login.html**. 
