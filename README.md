@@ -24,8 +24,8 @@
 #### Процесс реализации
 ------------------------
 #### 1. Пользовательский интерфейс
-![login](pic/pic1)
-![teacher](pic/pic2)
+![login](tree/main/pic/pic1.png)
+![teacher](pic/pic2.png)
 ![student](pic/pic3)
 ![admin1](pic/pic4)
 ![admin2](pic/pic5)
