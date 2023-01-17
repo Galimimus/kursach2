@@ -23,10 +23,14 @@
 
 #### Процесс реализации
 ------------------------
-#### 1. Пользовательский интерфейс
+#### Пользовательский интерфейс
+1. login.html
 ![login](pic/pic1.png)
+2. teacher.html
 ![teacher](pic/pic2.png)
+3. student.html
 ![student](pic/pic3.png)
+4. admin.html
 ![admin1](pic/pic4.png)
 ![admin2](pic/pic5.png)
 ![admin3](pic/pic6.png)
